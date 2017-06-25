@@ -56,18 +56,15 @@ var shoppingCart = function(){
 
     var select = "SELECT * FROM products WHERE item_id=" + answers.Item_id;
      
-     // if(select != answers.Item_id){
-     //    console.log("Sorry ID not valid!");
-     //    displaytable();
-     //   }
+     
+    
     
     connection.query(select, function(err, res){
        
       if (err) throw err;
-      
       //if quantity selected by user is greater than the available in stock will show the the warning and the table will be display for another try.
       if (answers.Quantity > res[0].stock_quantity){ 
-      console.log("Sorry, amount request not available.")
+      console.log("Sorry, Insufficient quantity!")
       displaytable();} 
      //update the stock quantity 
       else{
