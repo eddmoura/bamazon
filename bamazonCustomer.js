@@ -34,10 +34,12 @@ connection.query("SELECT * FROM products", function(err, res) {
       table.push(bamazonProducts);
     }
     console.log(table.toString());
-    shoppingCart();
-
+    
+shoppingCart();
   });
+
 };
+
 
 var shoppingCart = function(){
       inquirer.prompt([{
