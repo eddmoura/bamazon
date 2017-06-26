@@ -23,18 +23,19 @@ connection.connect(function(err) {
 var displaytable = function() {
 connection.query("SELECT * FROM products", function(err, res) {
       if (err) throw err;
-  
+  // creation of the head of the row with their dimension
    var table = new Table({
     head:["item_id", "product_name", "department_name", "price", "stock_quantity"],
     colWidths: [10, 50, 25, 10, 20]
    });
-
+  // var bamazonProducts takes each value from database and creates the table.
     for(var i = 0; i < res.length; i++){
       var bamazonProducts = [res[i].item_id, res[i].product_name, res[i].department_name, "$ " + res[i].price, res[i].stock_quantity];
       table.push(bamazonProducts);
     }
+    // display the thable ate the terminal.
     console.log(table.toString());
-    
+    //starts shoppingCart function.
 shoppingCart();
   });
 
@@ -79,7 +80,7 @@ var shoppingCart = function(){
             if(err) throw err;
 
           });
-        // calculate the price of the specify ID times the qunatity selected by the user.
+        // calculate the price of the specify ID times the quantity selected by the user.
         var total = res[0].price * answers.Quantity;
         console.log("Your total is: $ " + total);
 
